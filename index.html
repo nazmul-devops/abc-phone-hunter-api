@@ -48,14 +48,23 @@
             <svg class="lg:absolute lg:left-[450px] lg:top-[44px]" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                 <path d="M21 21L15.803 15.803M15.803 15.803C17.2096 14.3964 17.9998 12.4887 17.9998 10.4995C17.9998 8.51029 17.2096 6.60256 15.803 5.19599C14.3965 3.78941 12.4887 2.99921 10.4995 2.99921C8.51035 2.99921 6.60262 3.78941 5.19605 5.19599C3.78947 6.60256 2.99927 8.51029 2.99927 10.4995C2.99927 12.4887 3.78947 14.3964 5.19605 15.803C6.60262 17.2096 8.51035 17.9998 10.4995 17.9998C12.4887 17.9998 14.3965 17.2096 15.803 15.803Z" stroke="#706F6F" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
-            <input class="px-10 py-3 caret-blue-500 focus:caret-indigo-500 w-72 md:w-[600px] lg:w-[600px]" type="text" placeholder="Search your phone"/>
-            <button class="bg-[#0D6EFD] rounded-md font-bold text-white px-5 lg:px-10 py-3 my-8">Search</button>
+            <input id="searchField" class="px-10 py-3 caret-blue-500 focus:caret-indigo-500 w-72 md:w-[600px] lg:w-[600px]" type="text" placeholder="Search your phone"/>
+            <button onclick="searchProduct()" class="bg-[#0D6EFD] rounded-md font-bold text-white px-5 lg:px-10 py-3 my-8">Search</button>           
         </div>
 
+        <!-- Loading spinner  -->
+        <div class="text-center">
+            <button id="loadingSpinner" class="hidden btn bg-[#0D6EFD] text-white font-bold">
+                <span class=" loading loading-spinner"></span>
+                loading
+              </button>
+        </div>
+        
+
         <!-- product section  -->
-        <div class="container mx-auto grid grid-cols-1 gap-4 lg:grid-cols-3">
+        <div id="phonesContainer" class="container mx-auto grid grid-cols-1 gap-4 lg:grid-cols-3">
             <!-- product 01  -->
-            <div class="rounded-lg shadow-xl my-6 pb-5 mx-5">
+            <!-- <div class="rounded-lg shadow-xl my-6 pb-5 mx-5">
                 <div class="bg-sky-50 w-3/4 p-6 mx-auto mt-8 rounded-lg mb-6">
                     <img class="p-12" src="./images/iphone-5s.png" alt="iphone5s">
                 </div>
@@ -65,10 +74,10 @@
                     <h1 class="text-2xl font-bold text-[#403F3F]">$599</h1>
                     <button class="bg-[#0D6EFD] rounded-md font-bold text-white px-5 lg:px-10 py-3 my-8">Show Details</button>
                 </div>
-            </div>
+            </div> -->
 
             <!-- product 02  -->
-            <div class="rounded-lg shadow-xl my-6 pb-5 mx-5">
+            <!-- <div class="rounded-lg shadow-xl my-6 pb-5 mx-5">
                 <div class="bg-sky-50 w-3/4 p-6 mx-auto mt-8 rounded-lg mb-6">
                     <img class="p-12" src="./images/iphone-13pro.png" alt="iphone5s">
                 </div>
@@ -78,10 +87,10 @@
                     <h1 class="text-2xl font-bold text-[#403F3F]">$1299</h1>
                     <button class="bg-[#0D6EFD] rounded-md font-bold text-white px-5 lg:px-10 py-3 my-8">Show Details</button>
                 </div>
-            </div>
+            </div> -->
 
             <!-- product 03  -->
-            <div class="rounded-lg shadow-xl my-6 pb-5 mx-5">
+            <!-- <div class="rounded-lg shadow-xl my-6 pb-5 mx-5">
                 <div class="bg-sky-50 w-3/4 p-6 mx-auto mt-8 rounded-lg mb-6">
                     <img class="p-12" src="./images/samsung.png" alt="iphone5s">
                 </div>
@@ -91,23 +100,23 @@
                     <h1 class="text-2xl font-bold text-[#403F3F]">$999</h1>
                     <button class="bg-[#0D6EFD] rounded-md font-bold text-white px-5 lg:px-10 py-3 my-8">Show Details</button>
                 </div>
-            </div>
+            </div> -->
 
                   <!-- product 04  -->
-                  <div class="rounded-lg shadow-xl my-6 pb-5 mx-5">
-                    <div class="bg-sky-50 w-3/4 p-6 mx-auto mt-8 rounded-lg mb-6">
-                        <img class="p-12" src="./images/iphone-5s.png" alt="iphone5s">
-                    </div>
-                    <div class="text-center space-y-5 mb-6">
-                        <h1 class="text-2xl font-bold text-[#403F3F]">Iphone 5s</h1>
-                        <p>There are many variations of <br> passages of available, but the <br> majority have suffered</p>
-                        <h1 class="text-2xl font-bold text-[#403F3F]">$599</h1>
-                        <button class="bg-[#0D6EFD] rounded-md font-bold text-white px-5 lg:px-10 py-3 my-8">Show Details</button>
-                    </div>
-                </div>
+            <!-- <div class="rounded-lg shadow-xl my-6 pb-5 mx-5">
+            <div class="bg-sky-50 w-3/4 p-6 mx-auto mt-8 rounded-lg mb-6">
+                <img class="p-12" src="./images/iphone-5s.png" alt="iphone5s">
+            </div>
+            <div class="text-center space-y-5 mb-6">
+                <h1 class="text-2xl font-bold text-[#403F3F]">Iphone 5s</h1>
+                <p>There are many variations of <br> passages of available, but the <br> majority have suffered</p>
+                <h1 class="text-2xl font-bold text-[#403F3F]">$599</h1>
+                <button class="bg-[#0D6EFD] rounded-md font-bold text-white px-5 lg:px-10 py-3 my-8">Show Details</button>
+            </div>
+        </div> -->
     
                 <!-- product 05  -->
-                <div class="rounded-lg shadow-xl my-6 pb-5 mx-5">
+                <!-- <div class="rounded-lg shadow-xl my-6 pb-5 mx-5">
                     <div class="bg-sky-50 w-3/4 p-6 mx-auto mt-8 rounded-lg mb-6">
                         <img class="p-12" src="./images/iphone-13pro.png" alt="iphone5s">
                     </div>
@@ -117,10 +126,10 @@
                         <h1 class="text-2xl font-bold text-[#403F3F]">$1299</h1>
                         <button class="bg-[#0D6EFD] rounded-md font-bold text-white px-5 lg:px-10 py-3 my-8">Show Details</button>
                     </div>
-                </div>
+                </div> -->
     
                 <!-- product 06  -->
-                <div class="rounded-lg shadow-xl my-6 pb-5 mx-5">
+                <!-- <div class="rounded-lg shadow-xl my-6 pb-5 mx-5">
                     <div class="bg-sky-50 w-3/4 p-6 mx-auto mt-8 rounded-lg mb-6">
                         <img class="p-12" src="./images/samsung.png" alt="iphone5s">
                     </div>
@@ -130,13 +139,13 @@
                         <h1 class="text-2xl font-bold text-[#403F3F]">$999</h1>
                         <button class="bg-[#0D6EFD] rounded-md font-bold text-white px-5 lg:px-10 py-3 my-8">Show Details</button>
                     </div>
-                </div>
+                </div> -->
 
             </div>
 
             <!-- show all button  -->
             <div class="text-center">
-                <button class="bg-[#0D6EFD] rounded-md font-bold text-white px-5 lg:px-10 py-3 my-8">Show All</button>
+            <button onclick="handleShowAll()" id="showAll" class="bg-[#0D6EFD] hidden rounded-md font-bold text-white px-5 lg:px-10 py-3 my-8">Show All</button>
             </div>
     </main>
 
