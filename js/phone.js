@@ -1,0 +1,1 @@
+console.log(`Phone.js connected successfully.`)
