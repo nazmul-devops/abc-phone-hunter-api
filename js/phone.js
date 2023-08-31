@@ -1,6 +1,6 @@
 // console.log(`Phone.js connected successfully.`)
 
-const getPhoneData = async (searchText, isShowAll) => {
+const getPhoneData = async (searchText='13', isShowAll) => {
     const res = await fetch(`https://openapi.programming-hero.com/api/phones?search=${searchText}`);
     const data = await res.json();
     const phones = data.data;
@@ -27,7 +27,7 @@ const displayPhones = (phones, isShowAll) => {
         showAll.classList.add('hidden');
     }
 
-    console.log(`is show all, ${isShowAll}`)
+    // console.log(`is show all, ${isShowAll}`)
     // display first 12 phones if not clicked show all button
 
     if (!isShowAll){
@@ -48,8 +48,8 @@ const displayPhones = (phones, isShowAll) => {
         <div class="text-center space-y-5 mb-6">
         <h1 class="text-2xl font-bold text-[#403F3F]">${phone.phone_name}</h1>
         <p>There are many variations of <br> passages of available, but the <br> majority have suffered</p>
-        <h1 class="text-2xl font-bold text-[#403F3F]">$599</h1>
-        <button class="bg-[#0D6EFD] rounded-md font-bold text-white px-5 lg:px-10 py-3 my-8">Show Details</button>
+        <!-- <h1 class="text-2xl font-bold text-[#403F3F]">$599</h1> -->
+        <button onclick="handleShowDetails('${phone.slug}')" class="bg-[#0D6EFD] rounded-md font-bold text-white px-5 lg:px-10 py-3 my-8">Show Details</button>
         </div>
         `
         // Step 04
@@ -58,6 +58,35 @@ const displayPhones = (phones, isShowAll) => {
 
     toggleLoadingSpinner(false);
 }
+
+// show details 
+
+const handleShowDetails = async (id) => {
+    // console.log(`Show details button clicked, ${id}`);
+    const res = await fetch(`https://openapi.programming-hero.com/api/phone/${id}`);
+    const data = await res.json();
+    const phone = data.data;
+    console.log(phone);
+    showPhoneDetails(phone);
+}
+
+const showPhoneDetails = (phone) => {
+    const phoneDetailsContainer = document.getElementById('phoneDetailsContainer');
+    phoneDetailsContainer.innerHTML = `
+    <div class="bg-sky-50 w-3/4 p-6 mx-auto mt-8 rounded-lg mb-6">
+        <img class="mx-auto" src="${phone.image}" alt="iphone5s">
+    </div>
+    <h3 class="font-bold text-lg text-center py-4">${phone.name}</h3>
+    <p class="py-1">It is a long established fact that a reader will be distracted by <br> the readable content of a page when looking at its layout.</p>
+    <p class="py-1"><span class="font-semibold">Brand : </span>${phone.brand}</p>
+    <p class="py-1"><span class="font-semibold">Storage : </span>${phone.mainFeatures.storage}</p>
+    <p class="py-1"><span class="font-semibold">Display Size : </span>${phone.mainFeatures.displaySize}</p>
+    <p class="py-1"><span class="font-semibold">Chipset : </span>${phone.mainFeatures.chipSet}</p>
+    <p class="py-1"><span class="font-semibold">Memory : </span>${phone.mainFeatures.memory}</p>
+    `
+    show_details_modal.showModal();
+}
+
 
 // product search handler 
 
@@ -86,7 +115,6 @@ const toggleLoadingSpinner = (isLoading) => {
 const handleShowAll = () => {
     // console.log(`Show all button clicked by you.`)
     searchProduct(true);
-
 }
 
-// getPhoneData();
+getPhoneData();

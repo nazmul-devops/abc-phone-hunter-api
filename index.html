@@ -140,13 +140,30 @@
                         <button class="bg-[#0D6EFD] rounded-md font-bold text-white px-5 lg:px-10 py-3 my-8">Show Details</button>
                     </div>
                 </div> -->
-
+               
             </div>
 
             <!-- show all button  -->
             <div class="text-center">
             <button onclick="handleShowAll()" id="showAll" class="bg-[#0D6EFD] hidden rounded-md font-bold text-white px-5 lg:px-10 py-3 my-8">Show All</button>
             </div>
+
+            <!-- Open Modal show phone details  -->
+            <div class="">
+                <dialog id="show_details_modal" class="modal modal-bottom sm:modal-middle">
+                    <form method="dialog" class="modal-box">
+                        <div id="phoneDetailsContainer">
+                            
+                        </div>
+                        <!-- <p class="py-4"><span class="font-semibold">Storage :</span> </p> -->
+                        <div class="modal-action">
+                            <!-- if there is a button in form, it will close the modal -->
+                            <button class="btn bg-[#DC3545] hover:bg-red-500 text-white rounded-lg">Close</button>
+                        </div>
+                    </form>
+                </dialog>
+            </div>
+           
     </main>
 
     <!-- Footer Section  -->
@@ -189,7 +206,7 @@
                             </defs>
                           </svg>
 
-                          <button class="bg-[#0D6EFD] ml-4 rounded-md font-bold text-white px-5 lg:px-10 py-3 my-8">Show All</button>
+                          <button class="bg-[#0D6EFD] ml-4 rounded-md font-bold text-white px-5 lg:px-10 py-3 my-8">Join Premium</button>
                         </div>
                     </div>
                 </div>
